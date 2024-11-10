@@ -1,0 +1,190 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+    --clr-purple-800: hsl(263, 55%, 52%);
+    --clr-purple-600: hsl(264, 82%, 70%);
+    --clr-stone-500: hsl(0, 0%, 81%);
+    --clr-stone-100: hsla(0, 0%, 81%, 70%);
+    --clr-smoke-800: hsl(219, 29%, 14%);
+    --clr-smoke-600: hsl(217, 19%, 35%);
+    --clr-smoke-70: hsla(217, 19%, 35%, 70%);
+    --clr-smoke-50: hsla(217, 19%, 35%, 50%);
+    --clr-neutral-200: hsl(210, 46%, 95%);
+    --clr-neutral-100: hsl(0, 0%, 100%);
+    --clr-neutral-70: hsla(0, 0%, 100%, 70%);
+    --clr-neutral-50: hsla(0, 0%, 100%, 50%);
+    --clr-neutral-30: hsla(0, 0%, 100%, 30%);
+
+    --ff-base: 'Barlow Semi Condensed', sans-serif;
+
+    --fs-200: 11px;
+    --fs-400: 13px;
+    --fs-600: 20px;
+
+    --fw-regular: 500;
+    --fw-semibold: 600;
+}
+
+body {
+    font-family: var(--ff-base), sans-serif;
+    font-size: var(--fs-400);
+    font-weight: var(--fw-regular);
+    background-color: var(--clr-neutral-200);
+    color: var(--clr-smoke-600);
+    height: 100vh;
+    line-height: 1.5;
+    display: grid;
+    place-items: center;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2em;
+    margin: 3em auto;
+    width: 90%;
+    max-width: 600px;
+}
+
+.card {
+    padding: 2em 2.5em;
+    border-radius: .6em;
+    background-color: var(--clr-neutral-100);
+}
+
+.card[data-item-color="purple-dark"] {
+    background-color: var(--clr-purple-800);
+    position: relative;
+    z-index: -1;
+}
+
+.card[data-item-color="purple-dark"]:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 28px;
+    background: url('../images/bg-pattern-quotation.svg') no-repeat;
+    display: block;
+    z-index: -1;
+    width: 104px;
+    height: 102px;
+}
+
+.card[data-item-color="smoke-light"] {
+    background-color: var(--clr-smoke-600);
+}
+
+.card[data-item-color="smoke-dark"] {
+    background-color: var(--clr-smoke-800);
+}
+
+.card.quote .review-content {
+    color: var(--clr-stone-100);
+}
+
+.card.quote .reviewer-name,
+.card.quote .review-title,
+.card.dark .reviewer-name,
+.card.dark .review-title {
+    color: var(--clr-neutral-100);
+}
+
+.card.dark {
+    color: var(--clr-neutral-70);
+}
+
+.card.quote .reviewer-status,
+.card.dark .reviewer-status {
+    color: var(--clr-neutral-50);
+}
+
+.card.dark .review-title {
+    color: var(--clr-neutral-200);
+}
+
+.card.light .review-content {
+    color: var(--clr-smoke-70);
+}
+
+.card.light .reviewer-status {
+    color: var(--clr-smoke-50);
+}
+
+.reviewer-container {
+    display: flex;
+    gap: 1.5em;
+    align-items: center;
+    margin-bottom: 1.2em;
+}
+
+.reviewer-image {
+    width: 3em;
+    height: 3em;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.card[data-item-color="smoke-dark"] .reviewer-image {
+    border: 3px solid var(--clr-purple-800);
+}
+
+.card[data-item-color="purple-dark"] .reviewer-image {
+    border: 3px solid var(--clr-purple-600);
+}
+
+.reviewer-status {
+    font-size: var(--fs-200);
+}
+
+.review-title {
+    font-weight: var(--fw-semibold);
+    font-size: var(--fs-600);
+    line-height: 1.2;
+    margin-bottom: 1em;
+}
+
+.review-content {
+    width: 90%;
+}
+
+@media screen and (min-width: 980px) {
+    .grid-container {
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: auto;
+        grid-auto-rows: min-content;
+        gap: 2.2em;
+        width: 96%;
+        max-width: 1280px;
+    }
+
+    .card[data-item-color="purple-dark"]:after {
+        right: 85px;
+    }
+
+    .card[data-item-color="purple-dark"] {
+        grid-column: 1 / span 2;
+    }
+
+    .card[data-item-color="smoke-dark"] {
+        grid-row: 2;
+        grid-column: 2 / span 2;
+    }
+
+    .card[data-item="jeanette"] {
+        grid-row: 2;
+        grid-column: 1;
+    }
+
+    .card[data-item="kira"] {
+        grid-row: span 2;
+        grid-column: 4;
+    }
+
+    .review-title {
+        line-height: 1.4;
+    }
+
+    .review-content {
+        width: 100%;
+    }
+}
